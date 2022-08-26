@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Excluir</h1>
+<div mat-dialog-content>
+  Tu tem certeza que deseja excluir o registro ?
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="answerQuestion(false)">Não</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="answerQuestion(true)">Sim</button>
+</div>

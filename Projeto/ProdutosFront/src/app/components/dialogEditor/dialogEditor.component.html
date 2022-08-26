@@ -1,0 +1,36 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title *ngIf="product.id != '00000000-0000-0000-0000-000000000000'">Alterar Item</mat-card-title> 
+    <mat-card-title *ngIf="product.id == '00000000-0000-0000-0000-000000000000'">Cadastrar Item</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form> 
+      <div fxLayout="column" fxLayoutAlign="center stretch">
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px"> 
+          <mat-form-field appearance="fill">
+            <mat-label>Código</mat-label>
+            <input [(ngModel)]="product.code" name="code" type="number" pattern="[0-9]*" matInput>
+          </mat-form-field> 
+          <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="product.name" name="name" matInput>
+          </mat-form-field> 
+        </div>  
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px"> 
+          <mat-form-field appearance="fill">
+            <mat-label>Preço</mat-label>
+            <input [(ngModel)]="product.price" type="number" data-de name="price" min="0" matInput>
+          </mat-form-field> 
+          <mat-form-field appearance="fill">
+            <mat-label>Quantidade</mat-label>
+            <input [(ngModel)]="product.quantity" type="number" name="quantity" min="0" matInput>
+          </mat-form-field> 
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button cdkFocusInitial (click)="onClickSave()">Salvar</button>
+  </mat-card-actions>
+</mat-card>

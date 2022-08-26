@@ -1,0 +1,57 @@
+<div fxLayout="row" fxLayoutAlign="center center"> 
+  <div fxFlex="70">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="avatar-image"></div>
+        <mat-card-title>Target Software</mat-card-title>
+        <mat-card-subtitle>Produtos</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="form">  
+        <div fxLayout="column" fxLayoutAlign="center stretch" >
+          <form> 
+            <div fxLayout="row" fxLayoutAlign="start center"  fxLayoutGap="20px">
+              <mat-form-field appearance="fill">
+                <mat-label>Pesquisar Produto</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Calça" #input>
+              </mat-form-field> 
+              <button mat-flat-button color="primary" (click)="editDialog()">Adicionar</button>
+            </div>
+          </form>  
+          <table mat-table [dataSource]="dataSource" matSort> 
+            <ng-container matColumnDef="code">
+              <th mat-header-cell *matHeaderCellDef> Código </th>
+              <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Nome </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+              <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef> Preço </th>
+              <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+            </ng-container> 
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Ações </th>
+              <td mat-cell *matCellDef="let element">
+                <div fxLayoutGap="10px">
+                  <button (click)="editDialog(element)" mat-mini-fab>
+                    <mat-icon>edit</mat-icon>
+                  </button> 
+                  <button mat-mini-fab color="accent" (click)="openDialogConfirmation(element.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button> 
+                </div>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>  
+        </div>
+      </mat-card-content>
+    </mat-card>  
+  </div>
+</div>
